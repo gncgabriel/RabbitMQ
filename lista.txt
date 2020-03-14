@@ -1,0 +1,74 @@
+Código;Nome de Pregão;Atividade Principal
+VALE3;VALE ON;Mineração
+PETR4;PETROBRAS PN;Petróleo. Gás e Energia
+ITUB4;ITAUUNIBANCO PN;A Sociedade Tem por Objeto A Atividade Bancária em Todas as Modalidades Autorizadas. Inclusive A de Operações de Câmbio.
+B3SA3;B3;"Principais Atividades: Administrar Mercados Organizados de Títulos e Valores Mobiliários; Prestar Serviços de Registro. Compensação e Liquidação e de Suporte à Operações de Financiamento"
+BBDC4;BRADESCO PN;Prática de Operações Bancárias em Geral. Inclusive Câmbio
+BBAS3;BRASIL ON;Banco Múltiplo
+MGLU3;MAGAZ LUIZA ON;Somos Uma Rede Varejista e Atuamos com Foco na Comercialização de Bens Duráveis no Brasil.
+VVAR3;VIAVAREJO ON; 
+PETR3;PETROBRAS ON;Petróleo. Gás e Energia
+JBSS3;JBS ON; 
+ABEV3;AMBEV S/A ON;Fabricação e Distribuição de Cervejas. Refrigerantes e Bebidas Não Carbonatadas e Não Alcoólicas.
+LREN3;LOJAS RENNER ON;Loja de Departamentos (Comércio Varejista)
+ITSA4;ITAUSA PN;Gestão de Participações Societárias (holding)
+RENT3;LOCALIZA ON;Aluguel de Carros e Gestão de Frotas
+BPAC11;BTGP BANCO UNT;A Companhia e Suas Controladas Formam Um Grupo de Prestação de Serviços Financeiros Sediado no Brasil. Atuando como Banco Múltiplo. com Carteira de Investimento. Nos Termos da Legislação Aplicável.
+SUZB3;SUZANO PAPEL ON;Indústria e Comércio de Papel e Celulose
+GNDI3;INTERMEDICA ON;Prestação de Serviços de Assistência à Saúde e Odontológica.
+AZUL4;AZUL PN;Transporte e Logística
+NTCO3;GRUPO NATURA;Gestão de Participações Societárias em Sociedades que Desenvolvam Suas Atividades Principais no Ramo de Beleza.
+LAME4;LOJAS AMERIC PN;Comércio em Geral. Inclusive Supermercado e Lanchonete. Lojas de Conveniência. no Varejo e no Atacado. Através de Lojas e Depósitos. de Quaisquer Mercadorias. Bem como A Realização de Serviços.
+WEGE3;WEG ON;A Weg Sa É Uma Sociedade de Participação Não Operacional (holding) Etambém Sociedade de Comando do Grupo Weg.
+VIVT4;TELEF BRASIL PN;Prestação de Serviços Públicos de Telecomunicações
+KLBN11;KLABIN S/A UNT;Empresa Brasileira de Base Florestal. Produtora de Papéis e Cartões para Embalagens. Embalagens de Papelão Ondulado e Sacos Industriais. Além de Ser Recicladora e Produtora de Toras para Serrarias.
+RADL3;RAIADROGASIL ON;Comércio de Produtos Farmacêuticos. Perfumarias e Afins
+RAIL3;RUMO S.A. ON;Prestar Serviços de Transporte de Cargas Através dos Modais Ferroviário e Rodoviário. Dentre Outros. Isoladamente ou Combinados entre Si de Forma Intermodal ou Multimodal. entre Outros.
+COGN3;COGNA ON;A Companhia Tem por Objeto A Participação. como Sócia ou Acionista. em Sociedades que Explorem A Administração de Atividades de Educação.
+GNDI3;INTERMEDICA ON;Prestação de Serviços de Assistência à Saúde e Odontológica.
+CMIG4;CEMIG PN;Concessionária de Serviço Público de Energia Elétrica.
+BRFS3;BRF SA ON;Holding Operacional
+AZUL4;AZUL PN;Transporte e Logística
+UGPA3;ULTRAPAR ON;Distribuição de Combustíveis. Químicos. Armazenagem para Granéis Líquidos e Varejo Farmacêutico
+BTOW3;B2W DIGITAL ON;Comércio Varejista e Atacadista em Geral de Quaisquer Bens e Serviços Através de Diversos Meios. em Especial da Internet. sem Restrição A Outros Meios.
+BBSE3;BBSEGURIDADE ON;Participação no Capital Social de Outras Sociedades. que Tenham por Atividade Operações de Seguros. Resseguros. Previdências Complementar ou Capitalização.
+GOAU4;GERDAU MET PN;Participação e Administração
+CCRO3;CCR SA ON;Prestadora de Serviços Públicos por Meio de Concessões Rodoviária. Metroviária e Aeroportuária. Além de Prestação de Serviços de Meio de Pagamentos e Outros.
+BRDT3;PETROBRAS BR;Distribuição e Venda de Álcool Carburante. Biodísel. Gasolina e Demais Derivados de Petróleo. Incluindo Lubrificantes. Assim como Gás Natural.
+YDUQ3;YDUQS PART;Desenvolve Principalmente nas Áreas de Educação de Nível Superior. nas Modalidades Presencial e A Distância. Educação Profissional E/ou Outras Áreas Associadas à Educação.
+LAME4;LOJAS AMERIC PN;Comércio em Geral. Inclusive Supermercado e Lanchonete. Lojas de Conveniência. no Varejo e no Atacado. Através de Lojas e Depósitos. de Quaisquer Mercadorias. Bem como A Realização de Serviços.
+CYRE3;CYRELA REALT ON;Incorporação Imobiliária
+SBSP3;SABESP ON;Abastecimento de Água. Esgotamento Sanitário. Drenagem e Manejo de Águas Pluviais Urbanas. Limpeza Urbana. Manejo de Resíduos Sólidos e Energia.
+TAEE11;TAESA UNT;Transmissão de Energia Elétrica.
+TIMP3;TIM PART S/A ON; 
+BRKM5;BRASKEM PNA;"Produção de Produtos Químicos. Utilidades. Energia Elétrica e Outros;prestação de Serviços Industriais;participação em Outras Sociedades;locação de Bens; Representação/Consignação de Produtos Químicos"
+ELET3;ELETROBRAS ON;Empresa Holding de Geração. Transmissão e Distribuição de Energia
+BRML3;BR MALLS PAR ON;Holding
+MULT3;MULTIPLAN ON;Administração de Shopping Centers
+CSNA3;SID NACIONAL ON;A Companhia Siderúrgica Nacional Atua Nos Setores de Mineração. Siderurgia. Logística. Cimento e Energia.
+SULA11;SUL AMERICA UNT;A Sul América S.A. É Uma Sociedade de Participação e Suas Controladas Atuam Nos Setores de Seguros. Previdência Complementar. Administração de Recursos e Assistência à Saúde.
+HAPV3;HAPVIDA ON;Participação. como Sócia ou Acionista. em Outras Empresas. Predominantemente de Assistência Médica. Bem como A Realização de Investimentos Diretos e A Exploração de Atividades de Prestação de Serviços
+BBDC3;BRADESCO ON;Prática de Operações Bancárias em Geral. Inclusive Câmbio
+EGIE3;ENGIE BRASIL ON;Geração e Comercialização de Energia Elétrica
+USIM5;USIMINAS PNA;Venda de Produtos Siderúrgicos. como Chapas Grossas. Laminados A Quente. A Frio. Placas. Galvanizados. entre Outros.
+MRFG3;MARFRIG ON;Produção e Distribuição de Alimentos à Base de Carne Bovina. Suína. Ovina e Avícola. In Natura. Elaborados e Processados. Couros Semi-Terminados e Terminados. Além de Outros Produtos Alimentícios.
+CSAN3;COSAN ON;Produção de Açúcar. Etanol e Cogeração de Energia. Distribuição de Combustíveis.produção e Distribuição de Lubrificantes.tranporte e Carregamento de Açúcar. Operador de Terras e Distribuição de Gás.
+GOLL4;GOL PN;Gestão de Participação Societária
+BRAP4;BRADESPAR PN;Participação como Sócia ou Acionista de Outras Sociedades.
+MRVE3;MRV ON;Atividades de Incorporação e Construçãoatividades de Logística
+CIEL3;CIELO ON;Empresa Prestadora de Serviços de Adquirência e Meios de Pagamento.
+ELET6;ELETROBRAS PNB;Empresa Holding de Geração. Transmissão e Distribuição de Energia
+TOTS3;TOTVS ON;Prestação de Serviços de Consultoria. Assessoria e Desenvolvimento de Sistemas Informatizados (software). Atividades de Pesquisa e Inovação Tecnológica. Prestação de Serviços Relacionados à Gestão.
+HYPE3;HYPERMARCAS ON;Fabricacão de Medicamentos Alopáticos para Uso Humano
+SANB11;SANTANDER BR UNT;Banco Múltiplo com Carteira Comercial
+CVCB3;CVC BRASIL ON;Serviços de Turismo. Compreendendo A Intermediação. Individualmente ou na Forma Agregada. de Passagens Aéreas. Transporte Terrestre. Reservas de Hotéis. Passagens de Cruzeiros Marítimos. entre Outros.
+FLRY3;FLEURY ON;(i) A Prestação de Serviços Médicos e Medicina Diagnóstica. (ii) A Consultoria. Assessoria. Cursos e Palestras na Área da Saúde. Bem como A Prestação de Serviços que Visem A Promoção de Saúde
+CRFB3;CARREFOUR BR ON;"Comércio Varejista e Atacadista de Mercadorias em Geral; Carga e Descarga; Correspondentes de Instituições Financeiras; Atividades de Teleatendimento; Serviços de Alimentação entre Outros"
+QUAL3;QUALICORP ON;Prestação de Serviços e Gestão de Benefícios de Assistência à Saúde.
+EMBR3;EMBRAER ON;Projeto. Desenvolvimento. Fabricação. Comercialização de Aeronaves e Sistemas e Fornecimento de Suporte e Serviços de Pós-Venda.
+ENBR3;ENERGIAS BR ON;Área de Negócios: Geração. Distribuição. Transmissão e Comercialização de Energia Elétrica
+PCAR3;P.ACUCAR-CBD ON;Comércio Varejista
+HGTX3;CIA HERING ON;Confecção de Artigos do Vestuário e Acessórios
+ECOR3;ECORODOVIAS ON;Exploração Direta ou Indireta de Negócios de Concessão de Obras e Serviços Públicos e Organização Logísitica do Transporte de Carga.
+IGTA3;IGUATEMI ON;Empresa Full Service no Setor de Shopping Centers. Suas Atividades Englobam A Concepção. o Planejamento. o Desenvolvimento e A Administração de Shopping Centers Regionais e Complexos Imobiliários.
+SMLS3;SMILES ON;Programa de Fidelização que Reúne. em Único Ambiente ou Plataforma. Diversos Parceiros E/ou Outros Programas de Fidelização. Permitindo que Seus Clientes Possam Acumular Bem como Trocar Milhas.
