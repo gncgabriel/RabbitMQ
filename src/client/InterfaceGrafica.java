@@ -22,7 +22,9 @@ public class InterfaceGrafica extends JFrame {
     JTextField fieldServer = new JTextField(20);
     JLabel text2;
     JScrollPane scrollPane;
+    JScrollBar sb;
     static JPanel panel4;
+    private int count = 0;
 
     public InterfaceGrafica() {
         super("Client - Broker");
@@ -86,7 +88,7 @@ public class InterfaceGrafica extends JFrame {
 
         button2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                
+
                 ClientSend cs = new ClientSend(adressServer, "TESTE ENVIA", "acao.compra");
                 Thread tSendMsg = new Thread(cs);
                 tSendMsg.start();
@@ -137,14 +139,42 @@ public class InterfaceGrafica extends JFrame {
                     System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
 
                     DeliverCallback deliverCallback = (consumerTag, delivery) -> {
+                        
                         String message = new String(delivery.getBody(), "UTF-8");
                         System.out.println(
                                 " [x] Received '" + delivery.getEnvelope().getRoutingKey() + "':'" + message + "'");
+                                count++;
+                        /*
+                        if(count % 50 == 0){
+                            panel4.removeAll();
+                            panel4.revalidate();
+                            panel4.repaint();
+                        }
+                        */
+                        JLabel topico = new JLabel(delivery.getEnvelope().getRoutingKey());
+                        topico.setForeground(Color.WHITE);
+                        topico.setFont(new Font("Calibri", Font.ITALIC, 15));
+                        JPanel panelTopico = new JPanel(new FlowLayout());
+                        panelTopico.add(topico);
+                        panelTopico.setBackground(new Color(0, 0, 0));
                         JLabel msg = new JLabel(message);
-                        msg.setAlignmentX(CENTER_ALIGNMENT);
-                        panel4.add(msg);
+                        msg.setFont(new Font("Calibri", Font.PLAIN, 15));
+                        JPanel panelMsg = new JPanel(new FlowLayout());
+                        panelMsg.setBackground(new Color(255, 255, 255));
+                        panelMsg.add(msg);
+                       
+                        JPanel panelMsgTopico = new JPanel();
+                        panelMsgTopico.setLayout(new FlowLayout());
+                        panelMsgTopico.add(panelTopico);
+                        panelMsgTopico.add(panelMsg);
+                        panelMsgTopico.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
+                       
+                        scrollPane.getViewport().setViewPosition(new Point(0, Integer.MAX_VALUE));
+
+                        panel4.add(panelMsgTopico);
                         panel4.revalidate();
                         panel4.repaint();
+
 
                     };
                     channel.basicConsume(queueName, true, deliverCallback, consumerTag -> {
