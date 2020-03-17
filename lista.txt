@@ -1,74 +1,74 @@
-CÛdigo;Nome de Preg„o;Atividade Principal
-VALE3;VALE ON;MineraÁ„o
-PETR4;PETROBRAS PN;PetrÛleo. G·s e Energia
-ITUB4;ITAUUNIBANCO PN;A Sociedade Tem por Objeto A Atividade Banc·ria em Todas as Modalidades Autorizadas. Inclusive A de OperaÁıes de C‚mbio.
-B3SA3;B3;"Principais Atividades: Administrar Mercados Organizados de TÌtulos e Valores Mobili·rios; Prestar ServiÁos de Registro. CompensaÁ„o e LiquidaÁ„o e de Suporte ‡ OperaÁıes de Financiamento"
-BBDC4;BRADESCO PN;Pr·tica de OperaÁıes Banc·rias em Geral. Inclusive C‚mbio
-BBAS3;BRASIL ON;Banco M˙ltiplo
-MGLU3;MAGAZ LUIZA ON;Somos Uma Rede Varejista e Atuamos com Foco na ComercializaÁ„o de Bens Dur·veis no Brasil.
-VVAR3;VIAVAREJO ON;†
-PETR3;PETROBRAS ON;PetrÛleo. G·s e Energia
-JBSS3;JBS ON;†
-ABEV3;AMBEV S/A ON;FabricaÁ„o e DistribuiÁ„o de Cervejas. Refrigerantes e Bebidas N„o Carbonatadas e N„o AlcoÛlicas.
-LREN3;LOJAS RENNER ON;Loja de Departamentos (ComÈrcio Varejista)
-ITSA4;ITAUSA PN;Gest„o de ParticipaÁıes Societ·rias (holding)
-RENT3;LOCALIZA ON;Aluguel de Carros e Gest„o de Frotas
-BPAC11;BTGP BANCO UNT;A Companhia e Suas Controladas Formam Um Grupo de PrestaÁ„o de ServiÁos Financeiros Sediado no Brasil. Atuando como Banco M˙ltiplo. com Carteira de Investimento. Nos Termos da LegislaÁ„o Aplic·vel.
-SUZB3;SUZANO PAPEL ON;Ind˙stria e ComÈrcio de Papel e Celulose
-GNDI3;INTERMEDICA ON;PrestaÁ„o de ServiÁos de AssistÍncia ‡ Sa˙de e OdontolÛgica.
-AZUL4;AZUL PN;Transporte e LogÌstica
-NTCO3;GRUPO NATURA;Gest„o de ParticipaÁıes Societ·rias em Sociedades que Desenvolvam Suas Atividades Principais no Ramo de Beleza.
-LAME4;LOJAS AMERIC PN;ComÈrcio em Geral. Inclusive Supermercado e Lanchonete. Lojas de ConveniÍncia. no Varejo e no Atacado. AtravÈs de Lojas e DepÛsitos. de Quaisquer Mercadorias. Bem como A RealizaÁ„o de ServiÁos.
-WEGE3;WEG ON;A Weg Sa … Uma Sociedade de ParticipaÁ„o N„o Operacional (holding) EtambÈm Sociedade de Comando do Grupo Weg.
-VIVT4;TELEF BRASIL PN;PrestaÁ„o de ServiÁos P˙blicos de TelecomunicaÁıes
-KLBN11;KLABIN S/A UNT;Empresa Brasileira de Base Florestal. Produtora de PapÈis e Cartıes para Embalagens. Embalagens de Papel„o Ondulado e Sacos Industriais. AlÈm de Ser Recicladora e Produtora de Toras para Serrarias.
-RADL3;RAIADROGASIL ON;ComÈrcio de Produtos FarmacÍuticos. Perfumarias e Afins
-RAIL3;RUMO S.A. ON;Prestar ServiÁos de Transporte de Cargas AtravÈs dos Modais Ferrovi·rio e Rodovi·rio. Dentre Outros. Isoladamente ou Combinados entre Si de Forma Intermodal ou Multimodal. entre Outros.
-COGN3;COGNA ON;A Companhia Tem por Objeto A ParticipaÁ„o. como SÛcia ou Acionista. em Sociedades que Explorem A AdministraÁ„o de Atividades de EducaÁ„o.
-GNDI3;INTERMEDICA ON;PrestaÁ„o de ServiÁos de AssistÍncia ‡ Sa˙de e OdontolÛgica.
-CMIG4;CEMIG PN;Concession·ria de ServiÁo P˙blico de Energia ElÈtrica.
+C√≥digo;Nome de Preg√£o;Atividade Principal
+VALE3;VALE ON;Minera√ß√£o
+PETR4;PETROBRAS PN;Petr√≥leo. G√°s e Energia
+ITUB4;ITAUUNIBANCO PN;A Sociedade Tem por Objeto A Atividade Banc√°ria em Todas as Modalidades Autorizadas. Inclusive A de Opera√ß√µes de C√¢mbio.
+B3SA3;B3;Principais Atividades: Administrar Mercados Organizados de T√≠tulos e Valores Mobili√°rios. Prestar Servi√ßos de Registro. Compensa√ß√£o e Liquida√ß√£o e de Suporte √† Opera√ß√µes de Financiamento
+BBDC4;BRADESCO PN;Pr√°tica de Opera√ß√µes Banc√°rias em Geral. Inclusive C√¢mbio
+BBAS3;BRASIL ON;Banco M√∫ltiplo
+MGLU3;MAGAZ LUIZA ON;Somos Uma Rede Varejista e Atuamos com Foco na Comercializa√ß√£o de Bens Dur√°veis no Brasil.
+VVAR3;VIAVAREJO ON;¬†
+PETR3;PETROBRAS ON;Petr√≥leo. G√°s e Energia
+JBSS3;JBS ON;¬†
+ABEV3;AMBEV S/A ON;Fabrica√ß√£o e Distribui√ß√£o de Cervejas. Refrigerantes e Bebidas N√£o Carbonatadas e N√£o Alco√≥licas.
+LREN3;LOJAS RENNER ON;Loja de Departamentos (Com√©rcio Varejista)
+ITSA4;ITAUSA PN;Gest√£o de Participa√ß√µes Societ√°rias (holding)
+RENT3;LOCALIZA ON;Aluguel de Carros e Gest√£o de Frotas
+BPAC11;BTGP BANCO UNT;A Companhia e Suas Controladas Formam Um Grupo de Presta√ß√£o de Servi√ßos Financeiros Sediado no Brasil. Atuando como Banco M√∫ltiplo. com Carteira de Investimento. Nos Termos da Legisla√ß√£o Aplic√°vel.
+SUZB3;SUZANO PAPEL ON;Ind√∫stria e Com√©rcio de Papel e Celulose
+GNDI3;INTERMEDICA ON;Presta√ß√£o de Servi√ßos de Assist√™ncia √† Sa√∫de e Odontol√≥gica.
+AZUL4;AZUL PN;Transporte e Log√≠stica
+NTCO3;GRUPO NATURA;Gest√£o de Participa√ß√µes Societ√°rias em Sociedades que Desenvolvam Suas Atividades Principais no Ramo de Beleza.
+LAME4;LOJAS AMERIC PN;Com√©rcio em Geral. Inclusive Supermercado e Lanchonete. Lojas de Conveni√™ncia. no Varejo e no Atacado. Atrav√©s de Lojas e Dep√≥sitos. de Quaisquer Mercadorias. Bem como A Realiza√ß√£o de Servi√ßos.
+WEGE3;WEG ON;A Weg Sa √â Uma Sociedade de Participa√ß√£o N√£o Operacional (holding) Etamb√©m Sociedade de Comando do Grupo Weg.
+VIVT4;TELEF BRASIL PN;Presta√ß√£o de Servi√ßos P√∫blicos de Telecomunica√ß√µes
+KLBN11;KLABIN S/A UNT;Empresa Brasileira de Base Florestal. Produtora de Pap√©is e Cart√µes para Embalagens. Embalagens de Papel√£o Ondulado e Sacos Industriais. Al√©m de Ser Recicladora e Produtora de Toras para Serrarias.
+RADL3;RAIADROGASIL ON;Com√©rcio de Produtos Farmac√™uticos. Perfumarias e Afins
+RAIL3;RUMO S.A. ON;Prestar Servi√ßos de Transporte de Cargas Atrav√©s dos Modais Ferrovi√°rio e Rodovi√°rio. Dentre Outros. Isoladamente ou Combinados entre Si de Forma Intermodal ou Multimodal. entre Outros.
+COGN3;COGNA ON;A Companhia Tem por Objeto A Participa√ß√£o. como S√≥cia ou Acionista. em Sociedades que Explorem A Administra√ß√£o de Atividades de Educa√ß√£o.
+GNDI3;INTERMEDICA ON;Presta√ß√£o de Servi√ßos de Assist√™ncia √† Sa√∫de e Odontol√≥gica.
+CMIG4;CEMIG PN;Concession√°ria de Servi√ßo P√∫blico de Energia El√©trica.
 BRFS3;BRF SA ON;Holding Operacional
-AZUL4;AZUL PN;Transporte e LogÌstica
-UGPA3;ULTRAPAR ON;DistribuiÁ„o de CombustÌveis. QuÌmicos. Armazenagem para GranÈis LÌquidos e Varejo FarmacÍutico
-BTOW3;B2W DIGITAL ON;ComÈrcio Varejista e Atacadista em Geral de Quaisquer Bens e ServiÁos AtravÈs de Diversos Meios. em Especial da Internet. sem RestriÁ„o A Outros Meios.
-BBSE3;BBSEGURIDADE ON;ParticipaÁ„o no Capital Social de Outras Sociedades. que Tenham por Atividade OperaÁıes de Seguros. Resseguros. PrevidÍncias Complementar ou CapitalizaÁ„o.
-GOAU4;GERDAU MET PN;ParticipaÁ„o e AdministraÁ„o
-CCRO3;CCR SA ON;Prestadora de ServiÁos P˙blicos por Meio de Concessıes Rodovi·ria. Metrovi·ria e Aeroportu·ria. AlÈm de PrestaÁ„o de ServiÁos de Meio de Pagamentos e Outros.
-BRDT3;PETROBRAS BR;DistribuiÁ„o e Venda de ¡lcool Carburante. BiodÌsel. Gasolina e Demais Derivados de PetrÛleo. Incluindo Lubrificantes. Assim como G·s Natural.
-YDUQ3;YDUQS PART;Desenvolve Principalmente nas ¡reas de EducaÁ„o de NÌvel Superior. nas Modalidades Presencial e A Dist‚ncia. EducaÁ„o Profissional E/ou Outras ¡reas Associadas ‡ EducaÁ„o.
-LAME4;LOJAS AMERIC PN;ComÈrcio em Geral. Inclusive Supermercado e Lanchonete. Lojas de ConveniÍncia. no Varejo e no Atacado. AtravÈs de Lojas e DepÛsitos. de Quaisquer Mercadorias. Bem como A RealizaÁ„o de ServiÁos.
-CYRE3;CYRELA REALT ON;IncorporaÁ„o Imobili·ria
-SBSP3;SABESP ON;Abastecimento de ¡gua. Esgotamento Sanit·rio. Drenagem e Manejo de ¡guas Pluviais Urbanas. Limpeza Urbana. Manejo de ResÌduos SÛlidos e Energia.
-TAEE11;TAESA UNT;Transmiss„o de Energia ElÈtrica.
-TIMP3;TIM PART S/A ON;†
-BRKM5;BRASKEM PNA;"ProduÁ„o de Produtos QuÌmicos. Utilidades. Energia ElÈtrica e Outros;prestaÁ„o de ServiÁos Industriais;participaÁ„o em Outras Sociedades;locaÁ„o de Bens; RepresentaÁ„o/ConsignaÁ„o de Produtos QuÌmicos"
-ELET3;ELETROBRAS ON;Empresa Holding de GeraÁ„o. Transmiss„o e DistribuiÁ„o de Energia
+AZUL4;AZUL PN;Transporte e Log√≠stica
+UGPA3;ULTRAPAR ON;Distribui√ß√£o de Combust√≠veis. Qu√≠micos. Armazenagem para Gran√©is L√≠quidos e Varejo Farmac√™utico
+BTOW3;B2W DIGITAL ON;Com√©rcio Varejista e Atacadista em Geral de Quaisquer Bens e Servi√ßos Atrav√©s de Diversos Meios. em Especial da Internet. sem Restri√ß√£o A Outros Meios.
+BBSE3;BBSEGURIDADE ON;Participa√ß√£o no Capital Social de Outras Sociedades. que Tenham por Atividade Opera√ß√µes de Seguros. Resseguros. Previd√™ncias Complementar ou Capitaliza√ß√£o.
+GOAU4;GERDAU MET PN;Participa√ß√£o e Administra√ß√£o
+CCRO3;CCR SA ON;Prestadora de Servi√ßos P√∫blicos por Meio de Concess√µes Rodovi√°ria. Metrovi√°ria e Aeroportu√°ria. Al√©m de Presta√ß√£o de Servi√ßos de Meio de Pagamentos e Outros.
+BRDT3;PETROBRAS BR;Distribui√ß√£o e Venda de √Ålcool Carburante. Biod√≠sel. Gasolina e Demais Derivados de Petr√≥leo. Incluindo Lubrificantes. Assim como G√°s Natural.
+YDUQ3;YDUQS PART;Desenvolve Principalmente nas √Åreas de Educa√ß√£o de N√≠vel Superior. nas Modalidades Presencial e A Dist√¢ncia. Educa√ß√£o Profissional E/ou Outras √Åreas Associadas √† Educa√ß√£o.
+LAME4;LOJAS AMERIC PN;Com√©rcio em Geral. Inclusive Supermercado e Lanchonete. Lojas de Conveni√™ncia. no Varejo e no Atacado. Atrav√©s de Lojas e Dep√≥sitos. de Quaisquer Mercadorias. Bem como A Realiza√ß√£o de Servi√ßos.
+CYRE3;CYRELA REALT ON;Incorpora√ß√£o Imobili√°ria
+SBSP3;SABESP ON;Abastecimento de √Ågua. Esgotamento Sanit√°rio. Drenagem e Manejo de √Åguas Pluviais Urbanas. Limpeza Urbana. Manejo de Res√≠duos S√≥lidos e Energia.
+TAEE11;TAESA UNT;Transmiss√£o de Energia El√©trica.
+TIMP3;TIM PART S/A ON;¬†
+BRKM5;BRASKEM PNA;Produ√ß√£o de Produtos Qu√≠micos. Utilidades. Energia El√©trica e Outros.presta√ß√£o de Servi√ßos Industriais.participa√ß√£o em Outras Sociedades.loca√ß√£o de Bens. Representa√ß√£o/Consigna√ß√£o de Produtos Qu√≠micos
+ELET3;ELETROBRAS ON;Empresa Holding de Gera√ß√£o. Transmiss√£o e Distribui√ß√£o de Energia
 BRML3;BR MALLS PAR ON;Holding
-MULT3;MULTIPLAN ON;AdministraÁ„o de Shopping Centers
-CSNA3;SID NACIONAL ON;A Companhia Sider˙rgica Nacional Atua Nos Setores de MineraÁ„o. Siderurgia. LogÌstica. Cimento e Energia.
-SULA11;SUL AMERICA UNT;A Sul AmÈrica S.A. … Uma Sociedade de ParticipaÁ„o e Suas Controladas Atuam Nos Setores de Seguros. PrevidÍncia Complementar. AdministraÁ„o de Recursos e AssistÍncia ‡ Sa˙de.
-HAPV3;HAPVIDA ON;ParticipaÁ„o. como SÛcia ou Acionista. em Outras Empresas. Predominantemente de AssistÍncia MÈdica. Bem como A RealizaÁ„o de Investimentos Diretos e A ExploraÁ„o de Atividades de PrestaÁ„o de ServiÁos
-BBDC3;BRADESCO ON;Pr·tica de OperaÁıes Banc·rias em Geral. Inclusive C‚mbio
-EGIE3;ENGIE BRASIL ON;GeraÁ„o e ComercializaÁ„o de Energia ElÈtrica
-USIM5;USIMINAS PNA;Venda de Produtos Sider˙rgicos. como Chapas Grossas. Laminados A Quente. A Frio. Placas. Galvanizados. entre Outros.
-MRFG3;MARFRIG ON;ProduÁ„o e DistribuiÁ„o de Alimentos ‡ Base de Carne Bovina. SuÌna. Ovina e AvÌcola. In Natura. Elaborados e Processados. Couros Semi-Terminados e Terminados. AlÈm de Outros Produtos AlimentÌcios.
-CSAN3;COSAN ON;ProduÁ„o de AÁ˙car. Etanol e CogeraÁ„o de Energia. DistribuiÁ„o de CombustÌveis.produÁ„o e DistribuiÁ„o de Lubrificantes.tranporte e Carregamento de AÁ˙car. Operador de Terras e DistribuiÁ„o de G·s.
-GOLL4;GOL PN;Gest„o de ParticipaÁ„o Societ·ria
-BRAP4;BRADESPAR PN;ParticipaÁ„o como SÛcia ou Acionista de Outras Sociedades.
-MRVE3;MRV ON;Atividades de IncorporaÁ„o e ConstruÁ„oatividades de LogÌstica
-CIEL3;CIELO ON;Empresa Prestadora de ServiÁos de AdquirÍncia e Meios de Pagamento.
-ELET6;ELETROBRAS PNB;Empresa Holding de GeraÁ„o. Transmiss„o e DistribuiÁ„o de Energia
-TOTS3;TOTVS ON;PrestaÁ„o de ServiÁos de Consultoria. Assessoria e Desenvolvimento de Sistemas Informatizados (software). Atividades de Pesquisa e InovaÁ„o TecnolÛgica. PrestaÁ„o de ServiÁos Relacionados ‡ Gest„o.
-HYPE3;HYPERMARCAS ON;Fabricac„o de Medicamentos Alop·ticos para Uso Humano
-SANB11;SANTANDER BR UNT;Banco M˙ltiplo com Carteira Comercial
-CVCB3;CVC BRASIL ON;ServiÁos de Turismo. Compreendendo A IntermediaÁ„o. Individualmente ou na Forma Agregada. de Passagens AÈreas. Transporte Terrestre. Reservas de HotÈis. Passagens de Cruzeiros MarÌtimos. entre Outros.
-FLRY3;FLEURY ON;(i) A PrestaÁ„o de ServiÁos MÈdicos e Medicina DiagnÛstica. (ii) A Consultoria. Assessoria. Cursos e Palestras na ¡rea da Sa˙de. Bem como A PrestaÁ„o de ServiÁos que Visem A PromoÁ„o de Sa˙de
-CRFB3;CARREFOUR BR ON;"ComÈrcio Varejista e Atacadista de Mercadorias em Geral; Carga e Descarga; Correspondentes de InstituiÁıes Financeiras; Atividades de Teleatendimento; ServiÁos de AlimentaÁ„o entre Outros"
-QUAL3;QUALICORP ON;PrestaÁ„o de ServiÁos e Gest„o de BenefÌcios de AssistÍncia ‡ Sa˙de.
-EMBR3;EMBRAER ON;Projeto. Desenvolvimento. FabricaÁ„o. ComercializaÁ„o de Aeronaves e Sistemas e Fornecimento de Suporte e ServiÁos de PÛs-Venda.
-ENBR3;ENERGIAS BR ON;¡rea de NegÛcios: GeraÁ„o. DistribuiÁ„o. Transmiss„o e ComercializaÁ„o de Energia ElÈtrica
-PCAR3;P.ACUCAR-CBD ON;ComÈrcio Varejista
-HGTX3;CIA HERING ON;ConfecÁ„o de Artigos do Vestu·rio e AcessÛrios
-ECOR3;ECORODOVIAS ON;ExploraÁ„o Direta ou Indireta de NegÛcios de Concess„o de Obras e ServiÁos P˙blicos e OrganizaÁ„o LogÌsitica do Transporte de Carga.
-IGTA3;IGUATEMI ON;Empresa Full Service no Setor de Shopping Centers. Suas Atividades Englobam A ConcepÁ„o. o Planejamento. o Desenvolvimento e A AdministraÁ„o de Shopping Centers Regionais e Complexos Imobili·rios.
-SMLS3;SMILES ON;Programa de FidelizaÁ„o que Re˙ne. em ⁄nico Ambiente ou Plataforma. Diversos Parceiros E/ou Outros Programas de FidelizaÁ„o. Permitindo que Seus Clientes Possam Acumular Bem como Trocar Milhas.
+MULT3;MULTIPLAN ON;Administra√ß√£o de Shopping Centers
+CSNA3;SID NACIONAL ON;A Companhia Sider√∫rgica Nacional Atua Nos Setores de Minera√ß√£o. Siderurgia. Log√≠stica. Cimento e Energia.
+SULA11;SUL AMERICA UNT;A Sul Am√©rica S.A. √â Uma Sociedade de Participa√ß√£o e Suas Controladas Atuam Nos Setores de Seguros. Previd√™ncia Complementar. Administra√ß√£o de Recursos e Assist√™ncia √† Sa√∫de.
+HAPV3;HAPVIDA ON;Participa√ß√£o. como S√≥cia ou Acionista. em Outras Empresas. Predominantemente de Assist√™ncia M√©dica. Bem como A Realiza√ß√£o de Investimentos Diretos e A Explora√ß√£o de Atividades de Presta√ß√£o de Servi√ßos
+BBDC3;BRADESCO ON;Pr√°tica de Opera√ß√µes Banc√°rias em Geral. Inclusive C√¢mbio
+EGIE3;ENGIE BRASIL ON;Gera√ß√£o e Comercializa√ß√£o de Energia El√©trica
+USIM5;USIMINAS PNA;Venda de Produtos Sider√∫rgicos. como Chapas Grossas. Laminados A Quente. A Frio. Placas. Galvanizados. entre Outros.
+MRFG3;MARFRIG ON;Produ√ß√£o e Distribui√ß√£o de Alimentos √† Base de Carne Bovina. Su√≠na. Ovina e Av√≠cola. In Natura. Elaborados e Processados. Couros Semi-Terminados e Terminados. Al√©m de Outros Produtos Aliment√≠cios.
+CSAN3;COSAN ON;Produ√ß√£o de A√ß√∫car. Etanol e Cogera√ß√£o de Energia. Distribui√ß√£o de Combust√≠veis.produ√ß√£o e Distribui√ß√£o de Lubrificantes.tranporte e Carregamento de A√ß√∫car. Operador de Terras e Distribui√ß√£o de G√°s.
+GOLL4;GOL PN;Gest√£o de Participa√ß√£o Societ√°ria
+BRAP4;BRADESPAR PN;Participa√ß√£o como S√≥cia ou Acionista de Outras Sociedades.
+MRVE3;MRV ON;Atividades de Incorpora√ß√£o e Constru√ß√£oatividades de Log√≠stica
+CIEL3;CIELO ON;Empresa Prestadora de Servi√ßos de Adquir√™ncia e Meios de Pagamento.
+ELET6;ELETROBRAS PNB;Empresa Holding de Gera√ß√£o. Transmiss√£o e Distribui√ß√£o de Energia
+TOTS3;TOTVS ON;Presta√ß√£o de Servi√ßos de Consultoria. Assessoria e Desenvolvimento de Sistemas Informatizados (software). Atividades de Pesquisa e Inova√ß√£o Tecnol√≥gica. Presta√ß√£o de Servi√ßos Relacionados √† Gest√£o.
+HYPE3;HYPERMARCAS ON;Fabricac√£o de Medicamentos Alop√°ticos para Uso Humano
+SANB11;SANTANDER BR UNT;Banco M√∫ltiplo com Carteira Comercial
+CVCB3;CVC BRASIL ON;Servi√ßos de Turismo. Compreendendo A Intermedia√ß√£o. Individualmente ou na Forma Agregada. de Passagens A√©reas. Transporte Terrestre. Reservas de Hot√©is. Passagens de Cruzeiros Mar√≠timos. entre Outros.
+FLRY3;FLEURY ON;(i) A Presta√ß√£o de Servi√ßos M√©dicos e Medicina Diagn√≥stica. (ii) A Consultoria. Assessoria. Cursos e Palestras na √Årea da Sa√∫de. Bem como A Presta√ß√£o de Servi√ßos que Visem A Promo√ß√£o de Sa√∫de
+CRFB3;CARREFOUR BR ON;Com√©rcio Varejista e Atacadista de Mercadorias em Geral. Carga e Descarga. Correspondentes de Institui√ß√µes Financeiras. Atividades de Teleatendimento. Servi√ßos de Alimenta√ß√£o entre Outros
+QUAL3;QUALICORP ON;Presta√ß√£o de Servi√ßos e Gest√£o de Benef√≠cios de Assist√™ncia √† Sa√∫de.
+EMBR3;EMBRAER ON;Projeto. Desenvolvimento. Fabrica√ß√£o. Comercializa√ß√£o de Aeronaves e Sistemas e Fornecimento de Suporte e Servi√ßos de P√≥s-Venda.
+ENBR3;ENERGIAS BR ON;√Årea de Neg√≥cios: Gera√ß√£o. Distribui√ß√£o. Transmiss√£o e Comercializa√ß√£o de Energia El√©trica
+PCAR3;P.ACUCAR-CBD ON;Com√©rcio Varejista
+HGTX3;CIA HERING ON;Confec√ß√£o de Artigos do Vestu√°rio e Acess√≥rios
+ECOR3;ECORODOVIAS ON;Explora√ß√£o Direta ou Indireta de Neg√≥cios de Concess√£o de Obras e Servi√ßos P√∫blicos e Organiza√ß√£o Log√≠sitica do Transporte de Carga.
+IGTA3;IGUATEMI ON;Empresa Full Service no Setor de Shopping Centers. Suas Atividades Englobam A Concep√ß√£o. o Planejamento. o Desenvolvimento e A Administra√ß√£o de Shopping Centers Regionais e Complexos Imobili√°rios.
+SMLS3;SMILES ON;Programa de Fideliza√ß√£o que Re√∫ne. em √önico Ambiente ou Plataforma. Diversos Parceiros E/ou Outros Programas de Fideliza√ß√£o. Permitindo que Seus Clientes Possam Acumular Bem como Trocar Milhas.

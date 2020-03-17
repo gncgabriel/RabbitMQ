@@ -68,23 +68,60 @@ public class InterfaceGrafica extends JFrame {
 
             }
         });
-        barra.add(servidor);
 
+        JMenu ativos = new JMenu("Ativos");
+        ativos.setMnemonic('A');
+
+        JMenuItem listaAtivos = new JMenuItem("Lista de ativos");
+        ativos.add(listaAtivos);
+
+        listaAtivos.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JDialog listaAtivosDialog = new JDialog(InterfaceGrafica.this, "Lista dos Ativos", true);
+                listaAtivosDialog.setLayout(new BorderLayout());
+                String[] header = new String[3];
+                header[0] = "Codigo";
+                header[1] = "Pregao";
+                header[2] = "Atividade";
+                
+                try {
+                    Arquivo arq = new Arquivo();
+                    String[][] ativos = arq.listarArquivo();
+                    
+                    JTable tabela = new JTable(ativos, header);
+                    JScrollPane scrollPane = new JScrollPane(tabela);
+                    tabela.setFillsViewportHeight(true);
+                    listaAtivosDialog.add(scrollPane);
+                    listaAtivosDialog.setSize(500, 720);
+                    listaAtivosDialog.setResizable(true);
+                    listaAtivosDialog.setLocationRelativeTo(null);
+                    listaAtivosDialog.setVisible(true);
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+
+            }
+        });
+
+        JMenuItem seguirAtivos = new JMenuItem("Seguir ativos");
+        ativos.add(seguirAtivos);
+
+        barra.add(servidor);
+        barra.add(ativos);
         panel1 = new JPanel();
         panel1.setLayout(new FlowLayout());
         add(panel1, BorderLayout.CENTER);
 
         JPanel panel2 = new JPanel();
         text2 = new JLabel("Conectado a " + adressServer);
+        text2.setFont(new Font("Calibri", Font.ITALIC, 13));
         panel2.add(text2);
 
         JPanel panel3 = new JPanel();
 
-        JButton button2 = new JButton("Comprar Ações");
-        JButton button3 = new JButton("Vender Ações");
+        JButton button2 = new JButton("Nova Oferta");
 
         panel3.add(button2);
-        panel3.add(button3);
 
         button2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -95,21 +132,11 @@ public class InterfaceGrafica extends JFrame {
 
             }
         });
-        button3.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                /*
-                 * ClientSend cs = new ClientSend(adressServer, textFieldMensagem.getText(),
-                 * topic.getText()); Thread tSendMsg = new Thread(cs); tSendMsg.start();
-                 * textFieldMensagem.setText(""); topic.setText("");
-                 */
-            }
-        });
-
         panel4 = new JPanel();
         panel4.setLayout(new BoxLayout(panel4, BoxLayout.Y_AXIS));
         panel4.setAlignmentX(CENTER_ALIGNMENT);
         scrollPane = new JScrollPane(panel4);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        
 
         add(panel3, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
@@ -139,18 +166,15 @@ public class InterfaceGrafica extends JFrame {
                     System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
 
                     DeliverCallback deliverCallback = (consumerTag, delivery) -> {
-                        
+
                         String message = new String(delivery.getBody(), "UTF-8");
                         System.out.println(
                                 " [x] Received '" + delivery.getEnvelope().getRoutingKey() + "':'" + message + "'");
-                                count++;
+                        count = count +1;
                         /*
-                        if(count % 50 == 0){
-                            panel4.removeAll();
-                            panel4.revalidate();
-                            panel4.repaint();
-                        }
-                        */
+                         * if(count % 50 == 0){ panel4.removeAll(); panel4.revalidate();
+                         * panel4.repaint(); }
+                         */
                         JLabel topico = new JLabel(delivery.getEnvelope().getRoutingKey());
                         topico.setForeground(Color.WHITE);
                         topico.setFont(new Font("Calibri", Font.ITALIC, 15));
@@ -162,19 +186,18 @@ public class InterfaceGrafica extends JFrame {
                         JPanel panelMsg = new JPanel(new FlowLayout());
                         panelMsg.setBackground(new Color(255, 255, 255));
                         panelMsg.add(msg);
-                       
+
                         JPanel panelMsgTopico = new JPanel();
                         panelMsgTopico.setLayout(new FlowLayout());
                         panelMsgTopico.add(panelTopico);
                         panelMsgTopico.add(panelMsg);
                         panelMsgTopico.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
-                       
+
                         scrollPane.getViewport().setViewPosition(new Point(0, Integer.MAX_VALUE));
 
                         panel4.add(panelMsgTopico);
                         panel4.revalidate();
                         panel4.repaint();
-
 
                     };
                     channel.basicConsume(queueName, true, deliverCallback, consumerTag -> {
