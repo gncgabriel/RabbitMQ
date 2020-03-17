@@ -25,9 +25,23 @@ public class InterfaceGrafica extends JFrame {
     JScrollBar sb;
     static JPanel panel4;
     private int count = 0;
+    private String[][] ativos;
+    // private char[] nameBroker = new char[4];
+    private String nameBrokerS = "";
 
     public InterfaceGrafica() {
         super("Client - Broker");
+
+        while (nameBrokerS.equals("") || nameBrokerS.equals(null)) {
+            try {
+                nameBrokerS = JOptionPane.showInputDialog(this, "Digite sua identificação de 4 caracteres");
+
+            } catch (Exception e) {
+            }
+
+        }
+        // nameBroker = nameBrokerS.toCharArray();
+
         topicos.add("#");
         layout = new BorderLayout(5, 5);
         Container c = getContentPane();
@@ -40,6 +54,13 @@ public class InterfaceGrafica extends JFrame {
         JMenuItem servidorItem = new JMenuItem("Configurar");
         servidor.add(servidorItem);
 
+        try {
+            Arquivo arq = new Arquivo();
+            ativos = arq.listarArquivo();
+        } catch (Exception e) {
+
+        }
+
         servidorItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 JDialog servDialog = new JDialog(InterfaceGrafica.this, "Configuração do servidor", true);
@@ -51,7 +72,7 @@ public class InterfaceGrafica extends JFrame {
                 btnSetServer.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         adressServer = fieldServer.getText();
-                        text2.setText("Conectado a " + adressServer);
+                        text2.setText(nameBrokerS + " - Conectado a " + adressServer);
                     }
                 });
 
@@ -83,12 +104,9 @@ public class InterfaceGrafica extends JFrame {
                 header[0] = "Codigo";
                 header[1] = "Pregao";
                 header[2] = "Atividade";
-                
+
                 try {
-                    Arquivo arq = new Arquivo();
-                    String[][] ativos = arq.listarArquivo();
-                    
-                    JTable tabela = new JTable(ativos, header);
+                    JTable tabela = new JTable(InterfaceGrafica.this.ativos, header);
                     JScrollPane scrollPane = new JScrollPane(tabela);
                     tabela.setFillsViewportHeight(true);
                     listaAtivosDialog.add(scrollPane);
@@ -113,7 +131,7 @@ public class InterfaceGrafica extends JFrame {
         add(panel1, BorderLayout.CENTER);
 
         JPanel panel2 = new JPanel();
-        text2 = new JLabel("Conectado a " + adressServer);
+        text2 = new JLabel(nameBrokerS + " - Conectado a " + adressServer);
         text2.setFont(new Font("Calibri", Font.ITALIC, 13));
         panel2.add(text2);
 
@@ -125,19 +143,67 @@ public class InterfaceGrafica extends JFrame {
 
         button2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                JDialog oferta = new JDialog(InterfaceGrafica.this, "Nova oferta", true);
+                String[] s = new String[InterfaceGrafica.this.ativos.length];
+                for (int i = 0; i < InterfaceGrafica.this.ativos.length; i++) {
+                    s[i] = InterfaceGrafica.this.ativos[i][0];
+                }
+                JComboBox<String> itens = new JComboBox<String>(s);
+                JPanel panel = new JPanel();
+                panel.setLayout(new FlowLayout());
+                JLabel ativo = new JLabel("Ativo: ");
+                panel.add(ativo);
+                panel.add(itens);
+                JLabel qtd = new JLabel("Quantidade: ");
+                JTextField qtdField = new JTextField(7);
+                panel.add(qtd);
+                panel.add(qtdField);
+                JLabel valor = new JLabel("Valor: ");
+                JTextField valorField = new JTextField(7);
+                panel.add(valor);
+                panel.add(valorField);
+                String[] opcao = new String[2];
+                opcao[0] = "compra";
+                opcao[1] = "venda";
+                JComboBox<String> op = new JComboBox<String>(opcao);
+                JLabel labelOpcao = new JLabel("Operação: ");
+                panel.add(labelOpcao);
+                panel.add(op);
 
-                ClientSend cs = new ClientSend(adressServer, "TESTE ENVIA", "acao.compra");
-                Thread tSendMsg = new Thread(cs);
-                tSendMsg.start();
+                JButton sub = new JButton("Enviar oferta");
+
+                JPanel panel2 = new JPanel();
+                panel2.setLayout(new FlowLayout());
+                panel2.add(sub);
+
+                sub.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        String msgOferta = qtdField.getText() + "," + valorField.getText() + "," + nameBrokerS;
+                        String topicoOferta = itens.getSelectedItem() + "." + op.getSelectedItem();
+                        ClientSend cs = new ClientSend(adressServer, msgOferta, topicoOferta);
+                        Thread tSendMsg = new Thread(cs);
+                        tSendMsg.start();
+                        
+                        oferta.setVisible(false);
+                        
+                    }
+                });
+
+                oferta.add(panel, BorderLayout.NORTH);
+                oferta.add(panel2, BorderLayout.SOUTH);
+                oferta.setSize(600, 120);
+                oferta.setResizable(true);
+                oferta.setLocationRelativeTo(null);
+                oferta.setVisible(true);
 
             }
         });
         panel4 = new JPanel();
         panel4.setLayout(new BoxLayout(panel4, BoxLayout.Y_AXIS));
-        panel4.setAlignmentX(CENTER_ALIGNMENT);
+        //panel4.setAlignmentX(CENTER_ALIGNMENT);
         scrollPane = new JScrollPane(panel4);
-        
-
+        scrollPane.setSize(100, 500);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(15);
         add(panel3, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
         add(panel2, BorderLayout.SOUTH);
@@ -170,11 +236,7 @@ public class InterfaceGrafica extends JFrame {
                         String message = new String(delivery.getBody(), "UTF-8");
                         System.out.println(
                                 " [x] Received '" + delivery.getEnvelope().getRoutingKey() + "':'" + message + "'");
-                        count = count +1;
-                        /*
-                         * if(count % 50 == 0){ panel4.removeAll(); panel4.revalidate();
-                         * panel4.repaint(); }
-                         */
+                        count = count + 1;
                         JLabel topico = new JLabel(delivery.getEnvelope().getRoutingKey());
                         topico.setForeground(Color.WHITE);
                         topico.setFont(new Font("Calibri", Font.ITALIC, 15));
@@ -182,22 +244,23 @@ public class InterfaceGrafica extends JFrame {
                         panelTopico.add(topico);
                         panelTopico.setBackground(new Color(0, 0, 0));
                         JLabel msg = new JLabel(message);
-                        msg.setFont(new Font("Calibri", Font.PLAIN, 15));
+                        msg.setFont(new Font("Calibri", Font.BOLD, 15));
                         JPanel panelMsg = new JPanel(new FlowLayout());
                         panelMsg.setBackground(new Color(255, 255, 255));
                         panelMsg.add(msg);
 
                         JPanel panelMsgTopico = new JPanel();
-                        panelMsgTopico.setLayout(new FlowLayout());
-                        panelMsgTopico.add(panelTopico);
-                        panelMsgTopico.add(panelMsg);
+                        panelMsgTopico.setLayout(new BorderLayout());
+                        panelMsgTopico.add(panelTopico, BorderLayout.NORTH);
+                        panelMsgTopico.add(panelMsg, BorderLayout.SOUTH);
                         panelMsgTopico.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
-
-                        scrollPane.getViewport().setViewPosition(new Point(0, Integer.MAX_VALUE));
+                        panelMsgTopico.setMaximumSize(new Dimension(250,70));
+                        
 
                         panel4.add(panelMsgTopico);
                         panel4.revalidate();
                         panel4.repaint();
+                        scrollPane.getViewport().setViewPosition(new Point(0, Integer.MAX_VALUE));
 
                     };
                     channel.basicConsume(queueName, true, deliverCallback, consumerTag -> {
