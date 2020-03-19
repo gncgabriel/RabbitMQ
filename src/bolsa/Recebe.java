@@ -1,5 +1,10 @@
 package bolsa;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.StringTokenizer;
+
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
@@ -9,10 +14,14 @@ public class Recebe implements Runnable {
     private static final String EXCHANGE_NAME = "BOLSADEVALORES";
     private String adressServer;
     private String topico;
+    private ArrayList<Oferta> ofertasDeCompra;
+    private ArrayList<Oferta> ofertasDeVenda;
 
     public Recebe(String serverName, String topico) {
         adressServer = serverName;
         this.topico = topico;
+        ofertasDeCompra = new ArrayList<Oferta>();
+        ofertasDeVenda = new ArrayList<Oferta>();
     }
 
     @Override
@@ -33,16 +42,36 @@ public class Recebe implements Runnable {
 
             DeliverCallback deliverCallback = (consumerTag, delivery) -> {
                 String message = new String(delivery.getBody(), "UTF-8");
-                System.out.println(" [x] Received '" + delivery.getEnvelope().getRoutingKey() + "':'" + message + "'");
-                Envia envia = new Envia(adressServer,message,delivery.getEnvelope().getRoutingKey());
+                String topicReceived = delivery.getEnvelope().getRoutingKey();
+                System.out.println(" [x] Received '" + topicReceived + "':'" + message + "'");
+                Envia envia = new Envia(adressServer, message, topicReceived);
                 Thread t1 = new Thread(envia);
                 t1.start();
+                StringTokenizer tok = new StringTokenizer(message, ",");
+                Oferta oferta = new Oferta(tok.nextToken(), tok.nextToken(), tok.nextToken());
+              
+
             };
+
             channel.basicConsume(queueName, true, deliverCallback, consumerTag -> {
             });
         } catch (Exception e) {
-            System.out.println("Erro no Recebe da Bolsa "+e.getMessage());
+            System.out.println("Erro no Recebe da Bolsa " + e.getMessage());
         }
 
+    }
+
+    public void novaTransacao(Oferta compra, Oferta venda) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        Date date = new Date();
+        String dataHora = formatter.format(date);
+        String corrVenda = venda.broker;
+        String corrCompra = compra.broker;
+        int qtd = venda.qtd;
+        float valor = venda.valor;
+        String message = dataHora + "," + corrVenda + "," + corrCompra + "," + qtd + "," + valor;
+        Envia envia = new Envia(adressServer, message, "transacao.*");
+        Thread t1 = new Thread(envia);
+        t1.start();
     }
 }

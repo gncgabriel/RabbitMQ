@@ -61,35 +61,6 @@ public class InterfaceGrafica extends JFrame {
 
         }
 
-        servidorItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                JDialog servDialog = new JDialog(InterfaceGrafica.this, "Configuração do servidor", true);
-                servDialog.setLayout(new BorderLayout());
-                JPanel panelServer = new JPanel();
-                JLabel sConfigTitle = new JLabel("Servidor: ");
-                JButton btnSetServer = new JButton("Definir Servidor");
-
-                btnSetServer.addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        adressServer = fieldServer.getText();
-                        text2.setText(nameBrokerS + " - Conectado a " + adressServer);
-                    }
-                });
-
-                fieldServer.setText(adressServer);
-                panelServer.add(sConfigTitle);
-                panelServer.add(fieldServer);
-                panelServer.add(btnSetServer);
-
-                servDialog.add(panelServer);
-                servDialog.setSize(300, 120);
-                servDialog.setResizable(false);
-                servDialog.setLocationRelativeTo(null);
-                servDialog.setVisible(true);
-
-            }
-        });
-
         JMenu ativos = new JMenu("Ativos");
         ativos.setMnemonic('A');
 
@@ -179,13 +150,13 @@ public class InterfaceGrafica extends JFrame {
                 sub.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         String msgOferta = qtdField.getText() + "," + valorField.getText() + "," + nameBrokerS;
-                        String topicoOferta = itens.getSelectedItem() + "." + op.getSelectedItem();
+                        String topicoOferta =  op.getSelectedItem() + "." + itens.getSelectedItem();
                         ClientSend cs = new ClientSend(adressServer, msgOferta, topicoOferta);
                         Thread tSendMsg = new Thread(cs);
                         tSendMsg.start();
-                        
+
                         oferta.setVisible(false);
-                        
+
                     }
                 });
 
@@ -200,7 +171,6 @@ public class InterfaceGrafica extends JFrame {
         });
         panel4 = new JPanel();
         panel4.setLayout(new BoxLayout(panel4, BoxLayout.Y_AXIS));
-        //panel4.setAlignmentX(CENTER_ALIGNMENT);
         scrollPane = new JScrollPane(panel4);
         scrollPane.setSize(100, 500);
         scrollPane.getVerticalScrollBar().setUnitIncrement(15);
@@ -254,8 +224,7 @@ public class InterfaceGrafica extends JFrame {
                         panelMsgTopico.add(panelTopico, BorderLayout.NORTH);
                         panelMsgTopico.add(panelMsg, BorderLayout.SOUTH);
                         panelMsgTopico.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
-                        panelMsgTopico.setMaximumSize(new Dimension(250,70));
-                        
+                        panelMsgTopico.setMaximumSize(new Dimension(250, 70));
 
                         panel4.add(panelMsgTopico);
                         panel4.revalidate();
@@ -274,6 +243,36 @@ public class InterfaceGrafica extends JFrame {
 
         Thread t1 = new Thread(r1);
         t1.start();
+
+        servidorItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                t1.interrupt();
+                JDialog servDialog = new JDialog(InterfaceGrafica.this, "Configuração do servidor", true);
+                servDialog.setLayout(new BorderLayout());
+                JPanel panelServer = new JPanel();
+                JLabel sConfigTitle = new JLabel("Servidor: ");
+                JButton btnSetServer = new JButton("Definir Servidor");
+
+                btnSetServer.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        adressServer = fieldServer.getText();
+                        text2.setText(nameBrokerS + " - Conectado a " + adressServer);
+                    }
+                });
+
+                fieldServer.setText(adressServer);
+                panelServer.add(sConfigTitle);
+                panelServer.add(fieldServer);
+                panelServer.add(btnSetServer);
+
+                servDialog.add(panelServer);
+                servDialog.setSize(300, 120);
+                servDialog.setResizable(false);
+                servDialog.setLocationRelativeTo(null);
+                servDialog.setVisible(true);
+                t1.start();
+            }
+        });
 
     }
 
