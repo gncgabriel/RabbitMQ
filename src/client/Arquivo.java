@@ -27,6 +27,7 @@ public class Arquivo {
         String line = null;
         reader.readLine();
 
+
         while ((line = reader.readLine()) != null) {
             StringTokenizer tok = new StringTokenizer(line, ";");
 

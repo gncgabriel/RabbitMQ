@@ -4,6 +4,8 @@ import javax.swing.*;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.ArrayList;
 
 import com.rabbitmq.client.Channel;
@@ -151,7 +153,7 @@ public class InterfaceGrafica extends JFrame {
                 sub.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         String msgOferta = qtdField.getText() + "," + valorField.getText() + "," + nameBrokerS;
-                        String topicoOferta =  op.getSelectedItem() + "." + itens.getSelectedItem();
+                        String topicoOferta = op.getSelectedItem() + "." + itens.getSelectedItem();
                         ClientSend cs = new ClientSend(adressServer, msgOferta, topicoOferta);
                         Thread tSendMsg = new Thread(cs);
                         tSendMsg.start();
@@ -183,6 +185,45 @@ public class InterfaceGrafica extends JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
 
+        t1 = new Thread(getRunnable());
+        t1.start();
+
+        servidorItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                JDialog servDialog = new JDialog(InterfaceGrafica.this, "Configuração do servidor", true);
+                servDialog.setLayout(new BorderLayout());
+                JPanel panelServer = new JPanel();
+                JLabel sConfigTitle = new JLabel("Servidor: ");
+                JButton btnSetServer = new JButton("Definir Servidor");
+
+                btnSetServer.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        t1.interrupt();
+                        adressServer = fieldServer.getText();
+                        t1 = new Thread(getRunnable());
+                        t1.start();
+                        text2.setText(nameBrokerS + " - Conectado a " + adressServer);
+                    }
+                });
+
+                fieldServer.setText(adressServer);
+                panelServer.add(sConfigTitle);
+                panelServer.add(fieldServer);
+                panelServer.add(btnSetServer);
+
+                servDialog.add(panelServer);
+                servDialog.setSize(300, 120);
+                servDialog.setResizable(false);
+                servDialog.setLocationRelativeTo(null);
+                servDialog.setVisible(true);
+
+            }
+        });
+
+    }
+
+    public Runnable getRunnable() {
         Runnable r1 = new Runnable() {
             @Override
             public void run() {
@@ -236,48 +277,31 @@ public class InterfaceGrafica extends JFrame {
                     channel.basicConsume(queueName, true, deliverCallback, consumerTag -> {
                     });
                 } catch (Exception e) {
-                    System.out.println("Erro no Recebe do Client " + e.getMessage());
+                    JPanel panelE = new JPanel();
+                    JScrollPane scrollPane = new JScrollPane(panelE);
+                    JDialog dialog = new JDialog(InterfaceGrafica.this, "Erro", true);
+                    JTextArea msgE = new JTextArea();
+
+                    StringWriter sw = new StringWriter();
+                    PrintWriter pw = new PrintWriter(sw);
+                    e.printStackTrace(pw);
+                    String sStackTrace = sw.toString();
+                    String s = "" + e.getMessage() + "\n\n" + sStackTrace;
+                    msgE.setText(s);
+                    msgE.setEditable(false);
+                    msgE.setLineWrap(true);
+                    msgE.setColumns(23);
+                    panelE.add(msgE);
+                    dialog.add(scrollPane, BorderLayout.CENTER);
+                    dialog.setSize(300, 300);
+                    dialog.setResizable(false);
+                    dialog.setLocationRelativeTo(null);
+                    dialog.setVisible(true);
                 }
 
             }
         };
-
-        t1 = new Thread(r1);
-        t1.start();
-
-        servidorItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                
-                JDialog servDialog = new JDialog(InterfaceGrafica.this, "Configuração do servidor", true);
-                servDialog.setLayout(new BorderLayout());
-                JPanel panelServer = new JPanel();
-                JLabel sConfigTitle = new JLabel("Servidor: ");
-                JButton btnSetServer = new JButton("Definir Servidor");
-
-                btnSetServer.addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        t1.interrupt();
-                        t1 = new Thread(r1);
-                        adressServer = fieldServer.getText();
-
-                        text2.setText(nameBrokerS + " - Conectado a " + adressServer);
-                    }
-                });
-
-                fieldServer.setText(adressServer);
-                panelServer.add(sConfigTitle);
-                panelServer.add(fieldServer);
-                panelServer.add(btnSetServer);
-
-                servDialog.add(panelServer);
-                servDialog.setSize(300, 120);
-                servDialog.setResizable(false);
-                servDialog.setLocationRelativeTo(null);
-                servDialog.setVisible(true);
-             
-            }
-        });
-
+        return r1;
     }
 
 }
