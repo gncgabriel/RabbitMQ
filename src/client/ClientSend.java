@@ -1,5 +1,7 @@
 package client;
 
+import javax.swing.JOptionPane;
+
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
@@ -34,6 +36,7 @@ public class ClientSend implements Runnable {
                 System.out.println(" [x] Sent '" + routingKey + "':'" + message + "'");
             }
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(InterfaceGrafica.scrollPane, e.getMessage());
             System.out.println("Erro na Envia da Bolsa "+e.getMessage());
         }
 
