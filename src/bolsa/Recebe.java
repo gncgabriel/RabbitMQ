@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.StringTokenizer;
 
+import javax.swing.*;
+
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
@@ -17,6 +19,7 @@ public class Recebe implements Runnable {
     private ArrayList<Oferta> ofertasDeCompra;
     private ArrayList<Oferta> ofertasDeVenda;
 
+
     public Recebe(String serverName, String topico) {
         adressServer = serverName;
         this.topico = topico;
@@ -24,6 +27,7 @@ public class Recebe implements Runnable {
         ofertasDeVenda = new ArrayList<Oferta>();
     }
 
+  
     @Override
     public void run() {
 
@@ -49,7 +53,7 @@ public class Recebe implements Runnable {
                 t1.start();
                 StringTokenizer tok = new StringTokenizer(message, ",");
                 Oferta oferta = new Oferta(tok.nextToken(), tok.nextToken(), tok.nextToken());
-              
+
 
             };
 

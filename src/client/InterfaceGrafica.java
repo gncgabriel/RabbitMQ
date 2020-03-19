@@ -28,6 +28,7 @@ public class InterfaceGrafica extends JFrame {
     private String[][] ativos;
     // private char[] nameBroker = new char[4];
     private String nameBrokerS = "";
+    private static Thread t1;
 
     public InterfaceGrafica() {
         super("Client - Broker");
@@ -241,12 +242,12 @@ public class InterfaceGrafica extends JFrame {
             }
         };
 
-        Thread t1 = new Thread(r1);
+        t1 = new Thread(r1);
         t1.start();
 
         servidorItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                t1.interrupt();
+                
                 JDialog servDialog = new JDialog(InterfaceGrafica.this, "Configuração do servidor", true);
                 servDialog.setLayout(new BorderLayout());
                 JPanel panelServer = new JPanel();
@@ -255,7 +256,10 @@ public class InterfaceGrafica extends JFrame {
 
                 btnSetServer.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
+                        t1.interrupt();
+                        t1 = new Thread(r1);
                         adressServer = fieldServer.getText();
+
                         text2.setText(nameBrokerS + " - Conectado a " + adressServer);
                     }
                 });
@@ -270,7 +274,7 @@ public class InterfaceGrafica extends JFrame {
                 servDialog.setResizable(false);
                 servDialog.setLocationRelativeTo(null);
                 servDialog.setVisible(true);
-                t1.start();
+             
             }
         });
 

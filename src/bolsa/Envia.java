@@ -34,7 +34,7 @@ public class Envia implements Runnable {
                 System.out.println(" [x] Replica '" + routingKey + "':'" + message + "'");
             }
         } catch (Exception e) {
-            System.out.println("Erro na Envia da Bolsa "+e.getMessage());
+           
         }
 
     }
