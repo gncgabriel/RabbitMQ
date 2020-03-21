@@ -23,9 +23,6 @@ public class InterfaceGrafica extends JFrame {
     static JScrollPane scrollPane;
     static final String EXCHANGE_NAME = "BOLSADEVALORES";
     static Thread t1;
-    private ArrayList<Oferta> ofertasDeCompra = new ArrayList<Oferta>();
-    private ArrayList<Oferta> ofertasDeVenda = new ArrayList<Oferta>();
-
     private ArrayList<Oferta> livroDeOfertas = new ArrayList<Oferta>();
 
     public InterfaceGrafica() {
