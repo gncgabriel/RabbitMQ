@@ -107,11 +107,10 @@ public class InterfaceGrafica extends JFrame {
 
                         } else {
                             livroDeOfertas.add(oferta);
+                            Envia envia = new Envia(server, message, topicReceived);
+                            Thread t1 = new Thread(envia);
+                            t1.start();
                         }
-
-                        Envia envia = new Envia(server, message, topicReceived);
-                        Thread t1 = new Thread(envia);
-                        t1.start();
 
                     };
 
