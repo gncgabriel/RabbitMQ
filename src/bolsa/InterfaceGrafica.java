@@ -3,12 +3,12 @@ package bolsa;
 import java.awt.BorderLayout;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-
+import java.util.Date;
+import java.util.StringTokenizer;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 import javax.swing.*;
-
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -23,57 +23,43 @@ public class InterfaceGrafica extends JFrame {
     static JScrollPane scrollPane;
     static final String EXCHANGE_NAME = "BOLSADEVALORES";
     static Thread t1;
+    private ArrayList<Oferta> ofertasDeCompra = new ArrayList<Oferta>();
+    private ArrayList<Oferta> ofertasDeVenda = new ArrayList<Oferta>();
+
+    private ArrayList<Oferta> livroDeOfertas = new ArrayList<Oferta>();
 
     public InterfaceGrafica() {
-        super("Bolsa de valores");
-        panel = new JPanel();
-        BoxLayout b = new BoxLayout(panel, BoxLayout.Y_AXIS);
-        panel.setLayout(b);
-        scrollPane = new JScrollPane(panel);
-        JMenuBar menu = new JMenuBar();
-        JMenu servidorMenu = new JMenu("Servidor");
-        servidorMenu.setMnemonic('S');
-        JMenuItem configMenu = new JMenuItem("Configurar servidor");
-        servidorMenu.add(configMenu);
-        menu.add(servidorMenu);
+        super("Configuração inicial - Bolsa de Valores");
+        JLabel labelServer = new JLabel("Servidor: ");
+        JTextField fieldServer = new JTextField(17);
+        JButton btnInit = new JButton("Iniciar");
+        fieldServer.setText("localhost");
+        JPanel panelInit = new JPanel();
+        panelInit.setLayout(new FlowLayout());
+        panelInit.add(labelServer);
+        panelInit.add(fieldServer);
+        JPanel panelBtn = new JPanel();
+        panelBtn.add(btnInit);
 
-        t1 = new Thread(getRunnable(adressServer, "#"));
-
-        configMenu.addActionListener(new ActionListener() {
+        btnInit.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
-                JDialog serverDialog = new JDialog(InterfaceGrafica.this, "Configuração de servidor", true);
-                JLabel lServidor = new JLabel("Endereço do servidor");
-                JTextField fieldServidor = new JTextField(16);
-                fieldServidor.setText(adressServer);
-                JButton definirServidor = new JButton("Definir Servidor");
-                definirServidor.addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        t1.interrupt();
-                        adressServer = fieldServidor.getText();
-                        t1 = new Thread(getRunnable(adressServer, "#"));
-                        t1.start();
-                    }
-                });
-                JPanel panel2 = new JPanel();
+                if (fieldServer.getText().length() == 0) {
+                    JOptionPane.showMessageDialog(InterfaceGrafica.this, "Preencha os campos corretamente");
+                } else {
+                    adressServer = fieldServer.getText();
+                    setVisible(false);
+                    iniciar();
 
-                panel2.add(lServidor);
-                panel2.add(fieldServidor);
-                panel2.add(definirServidor);
-
-                serverDialog.add(panel2);
-                serverDialog.setSize(300, 120);
-                serverDialog.setResizable(false);
-                serverDialog.setLocationRelativeTo(null);
-                serverDialog.setVisible(true);
-
+                }
             }
         });
 
-        t1.start();
-        setJMenuBar(menu);
-        add(scrollPane);
-        setSize(400, 300);
+        add(panelInit, BorderLayout.NORTH);
+        add(panelBtn, BorderLayout.SOUTH);
+        setSize(465, 100);
         setLocationRelativeTo(null);
+        setResizable(false);
         setVisible(true);
 
     }
@@ -101,42 +87,39 @@ public class InterfaceGrafica extends JFrame {
                         String message = new String(delivery.getBody(), "UTF-8");
                         String topicReceived = delivery.getEnvelope().getRoutingKey();
                         System.out.println(" [x] Received '" + topicReceived + "':'" + message + "'");
-                        Envia envia = new Envia(server, message, topicReceived);
-                        Thread t1 = new Thread(envia);
-                        t1.start();
-                        /*
-                         * StringTokenizer tok = new StringTokenizer(message, ","); Oferta oferta = new
-                         * Oferta(tok.nextToken(), tok.nextToken(), tok.nextToken());
-                         */
-                        panel.add(new JLabel(message));
+
+                        panel.add(new JLabel(message + " | " + topicReceived));
                         panel.repaint();
                         panel.revalidate();
                         scrollPane.getViewport().setViewPosition(new Point(0, Integer.MAX_VALUE));
+
+                        StringTokenizer tok = new StringTokenizer(message, ",");
+                        StringTokenizer tok2 = new StringTokenizer(topicReceived, ".");
+
+                        Oferta oferta = new Oferta(tok.nextToken(), tok.nextToken(), tok.nextToken(), tok2.nextToken(),
+                                tok2.nextToken());
+                        if (verifica(oferta) != null) {
+                            if (oferta.operacao.equals("compra")) {
+                                novaTransacao(oferta, verifica(oferta));
+                            } else {
+                                novaTransacao(verifica(oferta), oferta);
+                            }
+
+                        } else {
+                            livroDeOfertas.add(oferta);
+                        }
+
+                        Envia envia = new Envia(server, message, topicReceived);
+                        Thread t1 = new Thread(envia);
+                        t1.start();
+
                     };
 
                     channel.basicConsume(queueName, true, deliverCallback, consumerTag -> {
                     });
                 } catch (Exception e) {
-                    JPanel panelE = new JPanel();
-                    JScrollPane scrollPane = new JScrollPane(panelE);
-                    JDialog dialog = new JDialog(InterfaceGrafica.this, "Erro", true);
-                    JTextArea msgE = new JTextArea();
-
-                    StringWriter sw = new StringWriter();
-                    PrintWriter pw = new PrintWriter(sw);
-                    e.printStackTrace(pw);
-                    String sStackTrace = sw.toString();
-                    String s = "" + e.getMessage() + "\n\n" + sStackTrace;
-                    msgE.setText(s);
-                    msgE.setEditable(false);
-                    msgE.setLineWrap(true);
-                    msgE.setColumns(23);
-                    panelE.add(msgE);
-                    dialog.add(scrollPane, BorderLayout.CENTER);
-                    dialog.setSize(300, 300);
-                    dialog.setResizable(false);
-                    dialog.setLocationRelativeTo(null);
-                    dialog.setVisible(true);
+                    JOptionPane.showMessageDialog(InterfaceGrafica.scrollPane, e.getMessage(), "Erro",
+                            JOptionPane.WARNING_MESSAGE);
                 }
             }
 
@@ -145,4 +128,65 @@ public class InterfaceGrafica extends JFrame {
         return r1;
     }
 
+    public void iniciar() {
+        JFrame bolsaDialog = new JFrame("Bolsa de Valores Em Execução");
+        panel = new JPanel();
+        BoxLayout b = new BoxLayout(panel, BoxLayout.Y_AXIS);
+        panel.setLayout(b);
+        scrollPane = new JScrollPane(panel);
+
+        t1 = new Thread(getRunnable(adressServer, "#"));
+
+        t1.start();
+        bolsaDialog.add(scrollPane);
+        bolsaDialog.setSize(400, 300);
+        bolsaDialog.setLocationRelativeTo(null);
+        bolsaDialog.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        bolsaDialog.setVisible(true);
+    }
+
+    public void novaTransacao(Oferta compra, Oferta venda) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        Date date = new Date();
+        String dataHora = formatter.format(date);
+        String corrVenda = venda.broker;
+        String corrCompra = compra.broker;
+        int qtd = venda.qtd;
+        float valor = venda.valor;
+        String message = dataHora + "," + corrVenda + "," + corrCompra + "," + qtd + "," + valor;
+        Envia envia = new Envia(adressServer, message, "transacao." + compra.ativo);
+        Thread t1 = new Thread(envia);
+        t1.start();
+
+        panel.add(new JLabel(message + " | " + "transacao." + compra.ativo));
+        panel.repaint();
+        panel.revalidate();
+        scrollPane.getViewport().setViewPosition(new Point(0, Integer.MAX_VALUE));
+        try {
+            livroDeOfertas.remove(compra);
+            livroDeOfertas.remove(venda);
+        } catch (Exception e) {
+
+        }
+    }
+
+    public Oferta verifica(Oferta oferta) {
+        if (oferta.operacao.equals("compra")) {
+            for (Oferta o : livroDeOfertas) {
+                if (o.aceitaVender(oferta)) {
+
+                    return o;
+                }
+            }
+        } else {
+            for (Oferta o : livroDeOfertas) {
+                if (oferta.aceitaVender(o)) {
+
+                    return o;
+                }
+            }
+        }
+
+        return null;
+    }
 }

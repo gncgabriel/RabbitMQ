@@ -4,9 +4,8 @@ import javax.swing.*;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -25,13 +24,11 @@ public class InterfaceGrafica extends JFrame {
     static JPanel panel4;
     JDialog brokerFrameDialog;
 
-    private int count = 0;
     private String[][] ativos;
     private String nameBrokerS;
-    
 
     public InterfaceGrafica() {
-        super("Configuração inicial");
+        super("Configuração inicial - Broker");
 
         try {
             Arquivo arq = new Arquivo();
@@ -43,6 +40,7 @@ public class InterfaceGrafica extends JFrame {
         JLabel labelServer = new JLabel("Servidor: ");
         JLabel labelName = new JLabel("Nome (4 caracteres) :");
         JTextField fieldServer = new JTextField(17);
+        fieldServer.setText("localhost");
         JTextField fieldName = new JTextField(4);
         JButton btnInit = new JButton("Iniciar");
 
@@ -64,7 +62,16 @@ public class InterfaceGrafica extends JFrame {
                 } else {
                     adressServer = fieldServer.getText();
                     nameBrokerS = fieldName.getText();
-                    iniciar();
+                    if (topicos.size() == 0) {
+                        gerenciarTopicos();
+                        setVisible(false);
+                        iniciar();
+                    } else {
+                        setVisible(false);
+                        iniciar();
+                        
+                    }
+
                 }
             }
         });
@@ -73,8 +80,15 @@ public class InterfaceGrafica extends JFrame {
         setJMenuBar(barra);
         JMenu jMenuTopicos = new JMenu("Topicos");
         jMenuTopicos.setMnemonic('T');
-        JMenuItem seguirTopicos = new JMenuItem("Seguir topicos");
+        JMenuItem seguirTopicos = new JMenuItem("Gerenciar topicos");
         jMenuTopicos.add(seguirTopicos);
+
+        seguirTopicos.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                InterfaceGrafica.this.gerenciarTopicos();
+            }
+        });
 
         JMenu ativos = new JMenu("Ativos");
         ativos.setMnemonic('A');
@@ -139,27 +153,47 @@ public class InterfaceGrafica extends JFrame {
                     DeliverCallback deliverCallback = (consumerTag, delivery) -> {
 
                         String message = new String(delivery.getBody(), "UTF-8");
+                        StringTokenizer tok = new StringTokenizer(message, ",");
+                        String topicReceived = delivery.getEnvelope().getRoutingKey();
+                        StringTokenizer tok2 = new StringTokenizer(topicReceived,".");
                         System.out.println(
                                 " [x] Received '" + delivery.getEnvelope().getRoutingKey() + "':'" + message + "'");
-                        count = count + 1;
-                        JLabel topico = new JLabel(delivery.getEnvelope().getRoutingKey());
-                        topico.setForeground(Color.WHITE);
-                        topico.setFont(new Font("Calibri", Font.ITALIC, 15));
-                        JPanel panelTopico = new JPanel(new FlowLayout());
-                        panelTopico.add(topico);
-                        panelTopico.setBackground(new Color(0, 0, 0));
-                        JLabel msg = new JLabel(message);
-                        msg.setFont(new Font("Calibri", Font.BOLD, 15));
-                        JPanel panelMsg = new JPanel(new FlowLayout());
-                        panelMsg.setBackground(new Color(255, 255, 255));
-                        panelMsg.add(msg);
 
+                        tok.nextToken();
+                        tok.nextToken();
+
+                        JLabel topico = new JLabel(delivery.getEnvelope().getRoutingKey());
+                        JPanel panelTopico = new JPanel(new FlowLayout());
+                        JLabel msg = new JLabel(message);
+                        JPanel panelMsg = new JPanel(new FlowLayout());
                         JPanel panelMsgTopico = new JPanel();
-                        panelMsgTopico.setLayout(new BorderLayout());
-                        panelMsgTopico.add(panelTopico, BorderLayout.NORTH);
-                        panelMsgTopico.add(panelMsg, BorderLayout.SOUTH);
-                        panelMsgTopico.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
-                        panelMsgTopico.setMaximumSize(new Dimension(250, 70));
+                        
+                        if (tok.nextToken().equals(nameBrokerS) && !tok2.nextToken().equals("transacao")) {
+                            JLabel myLabel = new JLabel("<html>Minha Oferta: "+message+" | "+topicReceived+"</html>");
+                            JLabel myLabel2 = new JLabel("<html><br></html>");
+                            panelMsgTopico.add(myLabel);
+                            panelMsgTopico.add(myLabel2);
+                            panelMsgTopico.setMaximumSize(new Dimension(450, 25));
+                        } else {
+
+                            topico.setForeground(Color.WHITE);
+                            topico.setFont(new Font("Calibri", Font.ITALIC, 15));
+
+                            panelTopico.add(topico);
+                            panelTopico.setBackground(new Color(0, 0, 0));
+
+                            msg.setFont(new Font("Calibri", Font.BOLD, 15));
+
+                            panelMsg.setBackground(new Color(255, 255, 255));
+                            panelMsg.add(msg);
+
+                            panelMsgTopico.setLayout(new BorderLayout());
+                            panelMsgTopico.add(panelTopico, BorderLayout.NORTH);
+                            panelMsgTopico.add(panelMsg, BorderLayout.SOUTH);
+                            panelMsgTopico.setBorder(BorderFactory.createEmptyBorder(10,0,10,0));
+                            panelMsgTopico.setMaximumSize(new Dimension(450, 80));
+
+                        }
 
                         panel4.add(panelMsgTopico);
                         panel4.revalidate();
@@ -170,7 +204,8 @@ public class InterfaceGrafica extends JFrame {
                     channel.basicConsume(queueName, true, deliverCallback, consumerTag -> {
                     });
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(InterfaceGrafica.panel4, e.getMessage()+"\n \n"+"Essa janela será fechada");
+                    JOptionPane.showMessageDialog(InterfaceGrafica.panel4,
+                            e.getMessage() + "\n \n" + "Essa janela será fechada");
                     brokerFrameDialog.setVisible(false);
 
                 }
@@ -186,7 +221,6 @@ public class InterfaceGrafica extends JFrame {
         JPanel panel1;
         JLabel text2;
         brokerFrameDialog = new JDialog(InterfaceGrafica.this, "Client", true);
-        topicos.add("#");
 
         layout = new BorderLayout(5, 5);
         Container c = brokerFrameDialog.getContentPane();
@@ -255,6 +289,7 @@ public class InterfaceGrafica extends JFrame {
                     }
                 });
 
+                
                 oferta.add(panel, BorderLayout.NORTH);
                 oferta.add(panel2, BorderLayout.SOUTH);
                 oferta.setSize(600, 120);
@@ -270,6 +305,12 @@ public class InterfaceGrafica extends JFrame {
         Thread t1 = new Thread(getRunnable());
         t1.start();
 
+        brokerFrameDialog.addWindowListener(new WindowAdapter(){
+            public void windowClosing(WindowEvent e){
+                System.exit(0);
+            }
+        });
+
         scrollPane = new JScrollPane(panel4);
         scrollPane.setSize(100, 500);
         scrollPane.getVerticalScrollBar().setUnitIncrement(15);
@@ -281,5 +322,88 @@ public class InterfaceGrafica extends JFrame {
         brokerFrameDialog.setResizable(false);
         brokerFrameDialog.setVisible(true);
 
+    }
+
+    public void gerenciarTopicos() {
+        JDialog gerTopicoDialog = new JDialog(InterfaceGrafica.this, "Gerenciar topicos", true);
+        JPanel panel = new JPanel();
+        JScrollPane scrollPane = new JScrollPane(panel);
+        JButton addBtn = new JButton("Adicionar topico");
+        JButton removerBtn = new JButton("Remover topico");
+        JPanel panel2 = new JPanel();
+        panel2.setLayout(new FlowLayout());
+        panel2.add(addBtn);
+        panel2.add(removerBtn);
+
+        JPanel panel3 = new JPanel();
+        panel3.setLayout(new BoxLayout(panel3, BoxLayout.Y_AXIS));
+        if (topicos.size() > 0) {
+            for (String t : topicos) {
+                JLabel labelTopic = new JLabel(t);
+                panel3.add(labelTopic);
+            }
+        } else {
+            JLabel label = new JLabel("Adicione um topico para acompanhar");
+            JLabel label2 = new JLabel("Adicone # para ver todos os topicos");
+            JLabel label3 = new JLabel(
+                    "Para seguir um ativo específo adicione: 'operacao.ativo' | Exemplo: compra.PETR4");
+            panel3.add(label);
+            panel3.add(label2);
+            panel3.add(label3);
+        }
+
+        addBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String newTopic = JOptionPane.showInputDialog(null, "Digite um topico");
+                if (!newTopic.equals(null) && !newTopic.equals("")) {
+                    topicos.add(newTopic);
+                    panel3.removeAll();
+                    for (String t : topicos) {
+                        JLabel labelTopic = new JLabel(t);
+                        panel3.add(labelTopic);
+                    }
+                    panel3.repaint();
+                    panel3.revalidate();
+                }
+            }
+        });
+
+        removerBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String topicoARemover = JOptionPane.showInputDialog(null, "Digite o topico a ser removido");
+                if (!topicoARemover.equals(null) && !topicoARemover.equals("")) {
+                    topicos.remove(topicoARemover);
+                    panel3.removeAll();
+                    for (String t : topicos) {
+                        JLabel labelTopic = new JLabel(t);
+                        panel3.add(labelTopic);
+                    }
+                    panel3.repaint();
+                    panel3.revalidate();
+                }
+            }
+        });
+
+        JPanel panelBtnFin = new JPanel();
+        JButton fin = new JButton("Finalizar");
+        fin.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                gerTopicoDialog.setVisible(false);
+            }
+        });
+        panelBtnFin.setLayout(new FlowLayout());
+        panelBtnFin.add(fin);
+
+        panel.add(panel3);
+        gerTopicoDialog.add(panel2, BorderLayout.NORTH);
+        gerTopicoDialog.add(scrollPane, BorderLayout.CENTER);
+        gerTopicoDialog.add(panelBtnFin, BorderLayout.SOUTH);
+        gerTopicoDialog.setSize(500, 300);
+        gerTopicoDialog.setResizable(false);
+        gerTopicoDialog.setLocationRelativeTo(null);
+        gerTopicoDialog.setVisible(true);
     }
 }
