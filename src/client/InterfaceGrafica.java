@@ -127,7 +127,7 @@ public class InterfaceGrafica extends JFrame {
         add(panelBtn, BorderLayout.SOUTH);
         setSize(465, 150);
         setLocationRelativeTo(null);
-        setResizable(false);
+        setResizable(true);
         setVisible(true);
 
     }
@@ -319,7 +319,7 @@ public class InterfaceGrafica extends JFrame {
         brokerFrameDialog.add(panel2, BorderLayout.SOUTH);
         brokerFrameDialog.setSize(450, 600);
         brokerFrameDialog.setLocationRelativeTo(null);
-        brokerFrameDialog.setResizable(false);
+        brokerFrameDialog.setResizable(true);
         brokerFrameDialog.setVisible(true);
 
     }
@@ -402,7 +402,7 @@ public class InterfaceGrafica extends JFrame {
         gerTopicoDialog.add(scrollPane, BorderLayout.CENTER);
         gerTopicoDialog.add(panelBtnFin, BorderLayout.SOUTH);
         gerTopicoDialog.setSize(500, 300);
-        gerTopicoDialog.setResizable(false);
+        gerTopicoDialog.setResizable(true);
         gerTopicoDialog.setLocationRelativeTo(null);
         gerTopicoDialog.setVisible(true);
     }
